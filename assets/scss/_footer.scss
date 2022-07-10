@@ -1,0 +1,114 @@
+@use "mixin_and_valliable" as mixVal;
+
+footer{
+    @include mixVal.flex(space-between,flex-start,column);
+    width:100%;
+    padding:2.4rem;
+    color: #fff;
+    background-color: #333;
+    .footer_wrapper{
+        @include mixVal.flex(space-between,center);
+        width: inherit;
+        a{
+            img{
+                width:100%;
+            }
+            display: block;
+        }
+        .footer_navList_wrapper{
+            @include mixVal.flex(flex-end,center,column);
+            .menu-footer-menu-container{
+                #menu-footer-menu{
+                    @include mixVal.flex(flex-end,center);
+                    column-gap: 2.4rem;
+                    li{
+                        a{
+                            color:#fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .page-top_wrapper{
+        position: fixed;
+        display: flex;
+        width:50px;
+        height: 50px;
+        bottom:40px;
+        right:50px;
+        background-color: #fff;
+        z-index: 100;
+        a{
+            .page-top_container{
+                @include mixVal.flex();
+                svg{
+                    transition: .5s;
+                    polyline{
+                        width:50px;
+                        height:50px;
+                    }
+                }
+            }
+            &:hover{
+                .page-top_container{
+                    svg{
+                        transform: rotateY(360deg) translateY(-10px);
+                    }
+                }
+            }
+        }
+    }
+    small{
+        display:block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:mixVal.$tab_maxwidth) and (min-width:mixVal.$tab_minwidth) {
+    
+}
+
+@media screen and (max-width:mixVal.$sp_maxwidth) {
+    footer{
+        .footer_wrapper{
+            flex-direction: column-reverse;
+            h1{
+                a{
+                    @include mixVal.flex(center,center);
+                    img{
+                        width:45%;
+                        
+                    }
+                }
+            }
+            .footer_navList_wrapper{
+                .menu-footer-menu-container{
+                    #menu-footer-menu{
+                        flex-flow: column;
+                        row-gap: 2.4rem;
+                        li{
+                            a{
+                                color:#fff;
+                            }
+                        }
+                    }
+                }
+
+
+                .footer_navList{
+                    display: none;
+                }
+                .page-top_wrapper{
+                    position: fixed;
+                    display: flex;
+                    width:50px;
+                    height: 50px;
+                    bottom:20px;
+                    right:25px;
+                }
+            }
+        }
+    }
+}

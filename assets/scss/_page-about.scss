@@ -1,0 +1,184 @@
+@use "_mixin_and_valliable" as mixVal;
+$dummy_img:'https://placehold.jp/428x926.png';
+$bg_show:50vh;
+
+$grid-template-row_PC:5rem;
+$icon_square:50px;
+
+//wrapper_padding_PC
+$wrap-pd_top:72;
+$wrap-pd_right:32;
+$wrap-pd_bottom:72;
+$wrap-pd_left:32;
+
+//bg_padding_SP
+$bg-pd_top_SP:20;
+$bg-pd_right_SP:20;
+$bg-pd_bottom_SP:240;
+$bg-pd_left_SP:20;
+
+.section_about{
+    display: block;
+    .page-about_header{
+        @include mixVal.pageTitle_h3();
+    }
+    h4{
+        display: block;
+        text-align: center;
+    }
+    .parallax-bg1{
+        @include mixVal.bg_attach();
+        @include mixVal.bg_padding(20,20,160,20,rem);
+        @include mixVal.flex(flex-end,center,);
+        background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg1.webp');
+        .parallax_wrapper1{
+            margin-top: $bg_show;
+            @include mixVal.pg-wrap();
+            color: #000;
+            background-color: rgba(255,255,255,.9);
+            display: flex;
+            flex-flow: column;
+            row-gap: .8rem;
+            @include mixVal.wrapper_padding($wrap-pd_top,$wrap-pd_right,$wrap-pd_bottom,$wrap-pd_left);
+            .parallax_contents1{
+                width: 100%;
+                margin-bottom: 2rem;
+                @include mixVal.grid();
+                grid-template-columns: 28.75% 68.75%;                                        //2列
+                grid-template-rows: 
+                    $grid-template-row_PC $grid-template-row_PC $grid-template-row_PC 
+                    $grid-template-row_PC $grid-template-row_PC $grid-template-row_PC;                      //6行
+                column-gap: 2.5%;
+                row-gap: 1.5%;
+                padding: initial;
+                text-align: center;
+                .profile_dt{
+                grid-column: 1 / 2;
+                }
+                .profile_dd{
+                grid-column: 2 / 3;
+                }
+            }
+        }
+    }
+    .parallax-bg2{
+        @include mixVal.bg_attach();
+        @include mixVal.bg_padding(20,20,160,20,rem);
+        @include mixVal.flex(flex-start,center);
+        background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg2.webp');
+        .parallax_wrapper2{
+            margin-top: $bg_show;
+            @include mixVal.pg-wrap();
+            display: flex;
+            flex-flow: column;
+            color: #000;
+            @include mixVal.wrapper_padding($wrap-pd_top,$wrap-pd_right,$wrap-pd_bottom,$wrap-pd_left);
+            background-color: rgba(255,255,255,.9);
+            canvas{
+                margin-top: .8rem;
+            }
+            .parallax_contents2{
+                width: 100%;
+                @include mixVal.grid();
+                grid-template-columns: 8% 40%;                                          //2列
+                grid-template-rows: 
+                    $grid-template-row_PC $grid-template-row_PC $grid-template-row_PC 
+                    $grid-template-row_PC $grid-template-row_PC $grid-template-row_PC 
+                    $grid-template-row_PC $grid-template-row_PC $grid-template-row_PC;        //8行
+                column-gap: 1rem;
+                row-gap: 1rem;
+                padding: initial;
+                margin-top: .8rem;
+                text-align: center;
+                .usedTool_icon{
+                    grid-column: 1 / 2;
+                    @include mixVal.icon_square();
+                }
+                .usedTool_paragraph{
+                    grid-column: 2 / 3;
+                }
+            }
+        }
+    }
+    .parallax-bg3{
+        background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg3.webp');
+        @include mixVal.bg_attach();
+        @include mixVal.bg_padding(20,20,160,20,rem);
+        @include mixVal.flex(flex-end,center);
+        .parallax_wrapper3{
+            margin-top: $bg_show;
+            @include mixVal.flex(center,center,column);
+            row-gap: 4.0rem;
+            @include mixVal.pg-wrap();
+            font-size:16px;
+            color: #000;
+            @include mixVal.wrapper_padding($wrap-pd_top,$wrap-pd_right,$wrap-pd_bottom,$wrap-pd_left);
+            background-color: rgba(255,255,255,.9);
+            .parallax_wrapper3_container{
+                @include mixVal.flex(center,center,column);
+                row-gap: 0.8rem;
+                .parallax_contents3,.parallax_contents4,.parallax_contents4{
+                    width: 100%;
+                    @include mixVal.flex(flex-start,flex-start,column);
+                    row-gap: 1.6rem;
+                }
+                .parallax_contents3{
+                    .career_item{
+                        width: inherit;
+                        @include mixVal.flex("","",column);
+                        gap:0.8rem;
+                    }
+                }
+                .parallax_contents5{
+                    @include mixVal.flex("","",column);
+                    gap:0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:mixVal.$tab_maxwidth) and (min-width:mixVal.$tab_minwidth) {
+    
+}
+
+@media screen and (max-width:mixVal.$sp_maxwidth){
+    .section_about{
+        .parallax-bg1{
+            background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg1_res.webp');
+            justify-content:center;
+            @include mixVal.bg_padding($bg-pd_top_SP,$bg-pd_right_SP,$bg-pd_bottom_SP,$bg-pd_left_SP,rem);
+            .parallax_wrapper1{
+                @include mixVal.pg-wrap_res();
+            }
+        }
+        .parallax-bg2{
+            background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg2_res.webp');
+            justify-content:center;
+            @include mixVal.bg_padding($bg-pd_top_SP,$bg-pd_right_SP,$bg-pd_bottom_SP,$bg-pd_left_SP,rem);
+            .parallax_wrapper2{
+                @include mixVal.pg-wrap_res();
+                .parallax_contents2{
+                    grid-template-columns:10vw 45vw;
+                    column-gap: 3vw;
+                    row-gap: 1.5vh;
+                    img{
+                        width: 10vw;
+                        height:10vw;
+                    }
+                    p{
+                        font-size: 4vw;
+                    }
+                }
+            }
+        }
+        .parallax-bg3{
+            background-image: url('https://studiohamal.sakura.ne.jp/portfolio/wp-content/themes/studio_hamal/assets/img/about_bg3_res.webp');
+            justify-content:center;
+            @include mixVal.bg_padding($bg-pd_top_SP,$bg-pd_right_SP,$bg-pd_bottom_SP,$bg-pd_left_SP,rem);
+            .parallax_wrapper3{
+                @include mixVal.pg-wrap_res();
+            }
+        }
+    }
+}
